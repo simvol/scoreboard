@@ -1,0 +1,10 @@
+export const NOTIFY_USER = 'NOTIFY_USER';
+
+export const FETCH_CURRENT_GAME = 'FETCH_CURRENT_GAME';
+export const GAME_LOADING = 'GAME_LOADING';
+
+export const FETCH_USER = 'FETCH_USER';
+export const USER_LOADING = 'USER_LOADING';
+
+export const FETCH_ALL_PLAYERS = 'FETCH_ALL_PLAYERS';
+export const ALL_PLAYERS_LOADING = 'ALL_PLAYERS_LOADING';
