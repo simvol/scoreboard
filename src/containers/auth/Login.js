@@ -26,7 +26,11 @@ class Login extends Component {
     e.preventDefault();
 
     const { login, notifyUser } = this.props;
-    const { email, password } = this.state;
+    let { email, password } = this.state;
+
+    // Login with default user for those who doesnt' have account
+    email = this.state.email || 'default@user.com';
+    password = this.state.password || '1234567';
 
     login(email, password);
   };
@@ -42,30 +46,44 @@ class Login extends Component {
           </div>
         </div>
         <div className="row">
-          <form className="col s12" onSubmit={this.onSubmit} >
-              <div className="input-field col s12">
-                <input id="email" type="email" name="email" className="validate" onChange={this.onChange} />
-                <label htmlFor="email">Email</label>
-              </div>
-              <div className="input-field col s12">
-                <input id="password" type="password" name="password" className="validate" onChange={this.onChange} />
-                <label htmlFor="password">Password</label>
-              </div>
-              <div className="col s12">
-                <input type="submit" value="Login" className="btn" />
-              </div>
+          <form className="col s12" onSubmit={this.onSubmit}>
+            <div className="input-field col s12">
+              <input
+                id="email"
+                type="email"
+                name="email"
+                className="validate"
+                onChange={this.onChange}
+              />
+              <label htmlFor="email">Email</label>
+            </div>
+            <div className="input-field col s12">
+              <input
+                id="password"
+                type="password"
+                name="password"
+                className="validate"
+                onChange={this.onChange}
+              />
+              <label htmlFor="password">Password</label>
+            </div>
+            <div className="col s12">
+              <input type="submit" value="Login" className="btn" />
+            </div>
           </form>
         </div>
       </div>
-    )
+    );
   }
 }
 
-Login.propTypes = {
-};
+Login.propTypes = {};
 
 const mapStateToProps = state => ({
   user: state.user
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(
+  mapStateToProps,
+  { login }
+)(Login);
